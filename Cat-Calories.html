@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+
+    <title>How much to feed my cats</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>How much to feed my cats</h1>
+
+      <p>
+        Calculate how much to feed my two cats using Javascript factory
+        functions
+      </p>
+      <form>
+        <label for="">How much you cat weight in <b>lb</b>?</label>
+        <input type="text" id="catsweight" />
+        <button>Submit</button>
+      </form>
+      <p id="message"></p>
+      <p id="catsweightKg"></p>
+      <p id="feedamount"></p>
+    </div>
+
+    <script>
+      //Basic Calorie Calculator
+      // Formula = (Cat's weight in Kg) ¾ * 70 per Ohio State University
+      // https://vet.osu.edu/vmc/companion/our-services/nutrition-support-service/basic-calorie-calculator
+
+      // Step 1 - Input cat's weight in LB and convert to KG
+      // Step 2 - Calculate
+
+      let form = document.querySelector("form");
+      let catsWeight = document.getElementById("catsweight");
+      let para = document.getElementById("message");
+      let catsWeightKg = document.getElementById("catsweightKg");
+      let feedAmount = document.getElementById("feedamount");
+
+      form.onsubmit = function(e) {
+        e.preventDefault();
+        if (catsweight.value.trim() === "") {
+          para.className = "text-danger font-weight-bold";
+          para.textContent = "How much your cat weight?";
+        } else {
+          catsWeightKg.textContent =
+            (catsWeight.value / 2.205).toFixed(2) + "kg";
+          feedAmount.textContent =
+            (catsWeight.value ** 0.75 * 70).toFixed(2) + " Calories per day";
+        }
+      };
+    </script>
+  </body>
+</html>
